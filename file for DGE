@@ -1,0 +1,96 @@
+
+
+(# Copy first 1000 lines to a separate test file
+awk 'NR<1001' counts-mod-ak.txt > counts-test.txt) this is for shell 
+
+# Copy the counts-test.txt to your computer using Dropbox or other means and read it into the R
+read.table(file = "~/Dropbox/tmp-for-transfer-to-server/counts-test.txt", sep = "\t", header = T) -> counts
+
+#Create a list of geneIds
+genes <- counts$Geneid 
+#install biomaRt package in R and run
+
+
+#to check package is available 
+library("package name")
+
+
+#Setup mart so that biomaRt uses Feb 2021 version of Ensembl
+mart103.hs <- useMart("ENSEMBL_MART_ENSEMBL", "hsapiens_gene_ensembl", host = "https://feb2021.archive.ensembl.org")
+
+#Search Ensembl 103 and create a separate list 
+hgnc.list <- getBM(filters = "ensembl_gene_id", 
+      attributes = c("ensembl_gene_id", "hgnc_symbol"),
+      values = genes, mart = mart103.hs)
+
+
+#install tidyverse for next step
+full_join(hgnc.list, counts, by=c("ensembl_gene_id"="Geneid")) -> counts.with.hgnc
+View(counts.with.hgnc)
+
+
+path=(C:/Users/Anoop Kumar Tiwari/OneDrive/Documents/R/win-library/4.0/biomaRt/html/)
+
+
+#calculation of RPKM using edgeR 
+counts.DGElist <- DGEList(counts=counts.with.hgnc[,8:87], genes=counts.with.hgnc[,1:7])
+counts.DGElist.normF <- calcNormFactors(counts.DGElist)
+counts.rpkm <- rpkm(counts.DGElist.normF)
+class(counts.rpkm)
+View(counts.rpkm)
+
+
+#to merge 2 data frames of hgnc data and rpkm data
+total <- merge.data.frame(hgnc.list, counts.rpkm)
+
+
+#to save a df
+save(file.test, file = "data.Rda")
+
+
+#to write a df from environment
+
+
+#to drop a column from recent file 
+df <- subset(counts.test, select = c(Chr, start))
+
+
+#to remove columns from file 
+within(source-file, rm(Chr, End)) -> output-name
+
+
+#to find out similarity in files in selected columns
+intersect(1stfile$column-name, 2nd-file$colummn-name)
+
+
+#to find union in 2 columns of different files
+setdiff(1stfile$column-name, 2nd-file$colummn-name)
+
+
+#to select or slice some rows from the df
+source-file %>% slice(3:17) -> out-pu-file
+
+
+
+
+#to run join function with full join
+full_join(df-x, df-y, by=c("x-column-name"="y-column-name")) -> output-name
+#link for help https://dplyr.tidyverse.org/reference/join.html
+
+
+#to plot a graph with ggplot (x=should-have-mathematical-values, y=any-column-with-character-also)
+ggplot(data = pot, aes(x=Length, y=hgnc_symbol)) + geom_tile(size=10, fill="red")
+
+
+#to merge df by cbind function
+cbind(file_name, files_name) -> output_name
+
+
+
+#correlation
+#corre
+
+#geom_tile function in 
+ggplot(data = (filter(sialyl_20.scaled, hgnc_symbol == "ST6GALNAC1")), aes(x = samples, y = hgnc_symbol)) + geom_tile(aes(fill=rpkm)) + scale_fill_gradient2(high = "red", mid = "white", low = "blue") + labs(title = "rpkm_samples", x = "Samples", y = "Genes")
+
+
