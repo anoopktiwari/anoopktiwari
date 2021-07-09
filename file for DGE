@@ -80,6 +80,9 @@ full_join(df-x, df-y, by=c("x-column-name"="y-column-name")) -> output-name
 
 #to plot a graph with ggplot (x=should-have-mathematical-values, y=any-column-with-character-also)
 ggplot(data = pot, aes(x=Length, y=hgnc_symbol)) + geom_tile(size=10, fill="red")
+#geom_tile function in 
+ggplot(data = (filter(sialyl_20.scaled, hgnc_symbol == "ST6GALNAC1")), aes(x = samples, y = hgnc_symbol)) + geom_tile(aes(fill=rpkm)) + scale_fill_gradient2(high = "red", mid = "white", low = "blue") + labs(title = "rpkm_samples", x = "Samples", y = "Genes")
+
 
 
 #to merge df by cbind function
@@ -87,10 +90,5 @@ cbind(file_name, files_name) -> output_name
 
 
 
-#correlation
-#corre
-
-#geom_tile function in 
-ggplot(data = (filter(sialyl_20.scaled, hgnc_symbol == "ST6GALNAC1")), aes(x = samples, y = hgnc_symbol)) + geom_tile(aes(fill=rpkm)) + scale_fill_gradient2(high = "red", mid = "white", low = "blue") + labs(title = "rpkm_samples", x = "Samples", y = "Genes")
 
 
