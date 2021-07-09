@@ -82,6 +82,9 @@ full_join(df-x, df-y, by=c("x-column-name"="y-column-name")) -> output-name
 ggplot(data = pot, aes(x=Length, y=hgnc_symbol)) + geom_tile(size=10, fill="red")
 #geom_tile function in 
 ggplot(data = (filter(sialyl_20.scaled, hgnc_symbol == "ST6GALNAC1")), aes(x = samples, y = hgnc_symbol)) + geom_tile(aes(fill=rpkm)) + scale_fill_gradient2(high = "red", mid = "white", low = "blue") + labs(title = "rpkm_samples", x = "Samples", y = "Genes")
+#with filled mid v alue
+ggplot(data = sialyl_scaled, aes(x = samples, y = hgnc_symbol)) + geom_tile(aes(fill=rpkm)) + labs(title = "rpkm_samples", x = "rpkm_values", y = "hgnc_symbol") + scale_fill_gradient2(low="navy", mid="white", high="red",midpoint=0)
+
 
 
 
