@@ -92,6 +92,20 @@ ggplot(data = sialyl_scaled, aes(x = samples, y = hgnc_symbol)) + geom_tile(aes(
 cbind(file_name, files_name) -> output_name
 
 
+#to set colnames in my df
+colnames(trial2_transpose) <- rownames(trial$hgnc_symbol)
+or
+#to set 1st row as colname
+names(trial2_transpose) <- lapply(trial2_transpose[1, ], as.character)
+trial2_transpose <- trial2_transpose[-1,]
+
+#transpose
+trial2_transpose <- as.data.frame(t(as.matrix(trial2)))
+
+#to save a file
+write.table(trial, file="transposed.txt", row.names=T, sep="\t", quote=F)
+
+
 
 
 
