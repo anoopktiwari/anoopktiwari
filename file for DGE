@@ -94,6 +94,8 @@ cbind(file_name, files_name) -> output_name
 
 #to set colnames in my df
 colnames(trial2_transpose) <- rownames(trial$hgnc_symbol)
+#set colnames by specify column no.
+colnames(rawdata_oc)[1] <- "ens_id"
 or
 #to set 1st row as colname
 names(trial2_transpose) <- lapply(trial2_transpose[1, ], as.character)
