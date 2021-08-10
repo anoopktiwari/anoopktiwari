@@ -92,6 +92,8 @@ ggplot(data = sialyl_scaled, aes(x = samples, y = hgnc_symbol)) + geom_tile(aes(
 cbind(file_name, files_name) -> output_name
 
 
+#to set rownames as 1st column
+df <- tibble::rownames_to_column(df, "VALUE")
 #to set colnames in my df
 colnames(trial2_transpose) <- rownames(trial$hgnc_symbol)
 #set colnames by specify column no.
