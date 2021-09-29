@@ -257,3 +257,5 @@ ggheatmap +
 
 
   
+# taking a quick look
+glimpse(df)
