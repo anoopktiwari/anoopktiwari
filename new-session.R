@@ -13,4 +13,7 @@ output_name <- df[apply(df, 1, function(row) all(row !=1)), ]
 write.table(genes_counts1, file = "15k_genecount.gct", row.names=T, sep="\t", quote=F)
                         
                         
+# to convert row.names into columns
+cleared_tpm2 <- tibble::rownames_to_column(cleared_tpm, "Name")
+                        
                         
