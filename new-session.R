@@ -15,5 +15,12 @@ write.table(genes_counts1, file = "15k_genecount.gct", row.names=T, sep="\t", qu
                         
 # to convert row.names into columns
 cleared_tpm2 <- tibble::rownames_to_column(cleared_tpm, "Name")
+
+# add blank column                        
+add_column(cleared_tpm2, add_column="Dummy") -> cleared_tpm2                       
+                        
+# relocate columns by their names
+cleared_tpm2 %>% relocate(add_column, .after = Name) -> cleared_tpm2
+                        
                         
                         
