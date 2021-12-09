@@ -1,4 +1,9 @@
 
+# link for fpkm calculation
+# https://github.com/AAlhendi1707/countToFPKM/blob/master/R/countToFPKM-internal.R
+# package counttoFPKM
+# https://cran.r-project.org/web/packages/countToFPKM/countToFPKM.pdf
+# https://rdrr.io/bioc/DESeq2/man/fpkm.html
 
 (# Copy first 1000 lines to a separate test file
 awk 'NR<1001' counts-mod-ak.txt > counts-test.txt) this is for shell 
@@ -69,7 +74,7 @@ setdiff(1stfile$column-name, 2nd-file$colummn-name)
 
 #to select or slice some rows from the df
 source-file %>% slice(3:17) -> out-pu-file
-
+https://rdrr.io/bioc/DESeq2/man/fpkm.html
 
 
 
