@@ -171,6 +171,9 @@ help link:- https://tavareshugo.github.io/data-carpentry-rnaseq/04b_rnaseq_clust
 #to calculate z-score
 help-link:- https://www.r-bloggers.com/2020/02/how-to-compute-the-z-score-with-r/
 
+# to remove some specific characters from a column
+data.frame$col.name <- gsub(".extension", "", data.frame$col.name)
+
 
 
 #####################################################
